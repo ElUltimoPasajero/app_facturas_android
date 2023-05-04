@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">Facturas</string>
-    <string name="nombre_llamada">Botoncito</string>
+    <string name="bonton_desde">dia/mes/año</string>
+    <string name="boton_hasta">dia/mes/año</string>
+    <string name="text_view_hasta">Hasta</string>
+    <string name="text_view_desde">Desde</string>
+    <string name="por_importe">Por importe</string>
+    <string name="filtrar_facturas">Filtrar Facturas</string>
+    <string name="anulada">Anulada</string>
+    <string name="pendiente_de_pago">Pendiente de pago</string>
+    <string name="plan_de_pago">Fecha de emision</string>
+    <string name="cuota_fija">Cuota fija</string>
+    <string name="fecha_emision">Fecha de emision</string>
+    <string name="boton_aplicar">Aplicar</string>
+    <string name="slider_importe">0</string>
+    <string name="reinicio_filtros">Eliminar</string>
+    <string name="por_estado">Por estado</string>
+
+
+
 </resources>

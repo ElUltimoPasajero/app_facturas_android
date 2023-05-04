@@ -100,11 +100,11 @@ public class ActividadFiltrar extends AppCompatActivity {
         });
         Button botonFiltrar = findViewById(R.id.buttonAplicar);
 
-        CheckBox checkBox1 = (CheckBox) findViewById(R.id.checkBoxOpcion1);
-        CheckBox checkBox2 = (CheckBox) findViewById(R.id.checkBoxOpcion2);
-        CheckBox checkBox3 = (CheckBox) findViewById(R.id.checkBoxOpcion3);
-        CheckBox checkBox4 = (CheckBox) findViewById(R.id.checkBoxOpcion4);
-        CheckBox checkBox5 = (CheckBox) findViewById(R.id.checkBoxOpcion5);
+        CheckBox checkBoxPagada = (CheckBox) findViewById(R.id.checkBoxPagada);
+        CheckBox checkBoxAnulada = (CheckBox) findViewById(R.id.checkBoxAnulada);
+        CheckBox checkBoxCuotaFija = (CheckBox) findViewById(R.id.checkBoxCuotaFija);
+        CheckBox checkBoxPendienteDePago = (CheckBox) findViewById(R.id.checkBoxPendienteDePago);
+        CheckBox checkBoxPlanDePago = (CheckBox) findViewById(R.id.checkBoxPLanDePago);
 
         Button fechaInicio = (Button) findViewById(R.id.buttonDesde);
         Button fechaFin = (Button) findViewById(R.id.buttonHasta);
@@ -117,11 +117,11 @@ public class ActividadFiltrar extends AppCompatActivity {
                 Intent intent = new Intent(instance, MainActivity.class);
                 double maxValueSlider = Double.parseDouble(valorSeekBar.getText().toString());
                 HashMap<String, Boolean> estado = new HashMap<>();
-                estado.put("pagada", checkBox1.isChecked());
-                estado.put("anulada", checkBox2.isChecked());
-                estado.put("cuotaFija", checkBox3.isChecked());
-                estado.put("pendienteDePago", checkBox4.isChecked());
-                estado.put("planDePago", checkBox5.isChecked());
+                estado.put("pagada", checkBoxPagada.isChecked());
+                estado.put("anulada", checkBoxAnulada.isChecked());
+                estado.put("cuotaFija", checkBoxCuotaFija.isChecked());
+                estado.put("pendienteDePago", checkBoxPlanDePago.isChecked());
+                estado.put("planDePago", checkBoxPlanDePago.isChecked());
                 String fechaMin = fechaInicio.getText().toString();
                 String fechaMax = fechaFin.getText().toString();
                 Filtro miFiltro = new Filtro(fechaMax, fechaMin, maxValueSlider, estado);
@@ -170,6 +170,7 @@ public class ActividadFiltrar extends AppCompatActivity {
 
     private void resetFiltros() {
         // Restablecer valores de fecha
+
         Button fechaDesde = findViewById(R.id.buttonDesde);
         fechaDesde.setText("dia/mes/año");
         Button fechaHasta = findViewById(R.id.buttonHasta);
@@ -184,15 +185,15 @@ public class ActividadFiltrar extends AppCompatActivity {
         tvValorImporte.setText(String.valueOf(maxImporte));
 
 // Restablecer valores de checkboxes
-        CheckBox pagadas = findViewById(R.id.checkBoxOpcion1);
+        CheckBox pagadas = findViewById(R.id.checkBoxPagada);
         pagadas.setChecked(false);
-        CheckBox anuladas = findViewById(R.id.checkBoxOpcion2);
+        CheckBox anuladas = findViewById(R.id.checkBoxAnulada);
         anuladas.setChecked(false);
-        CheckBox cuotaFija = findViewById(R.id.checkBoxOpcion3);
+        CheckBox cuotaFija = findViewById(R.id.checkBoxCuotaFija);
         cuotaFija.setChecked(false);
-        CheckBox pendientesPago = findViewById(R.id.checkBoxOpcion4);
+        CheckBox pendientesPago = findViewById(R.id.checkBoxPendienteDePago);
         pendientesPago.setChecked(false);
-        CheckBox planPago = findViewById(R.id.checkBoxOpcion5);
+        CheckBox planPago = findViewById(R.id.checkBoxPLanDePago);
         planPago.setChecked(false);
     }
 }
