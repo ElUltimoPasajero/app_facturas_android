@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuHost;
 import androidx.core.view.MenuProvider;
 
+import com.example.appfacturasn.Constantes.Constantes;
 import com.google.gson.Gson;
 
 import java.util.Calendar;
@@ -34,14 +35,9 @@ public class ActividadFiltrar extends AppCompatActivity {
     Context context = this;
     DatePickerDialog datePickerDialog;
     private int valorActualSeekbar = 0;
-
     MenuHost menu = this;
     private Activity ActividadFiltrarFacturas = this;
-    private static final String stringPagada = "pagada";
-    private static final String stringAnulada = "anulada";
-    private static final String stringPendienteDePago = "pendienteDePago";
-    private static final String stringCuotaFija = "cuotaFija";
-    private static final String stringPlanDePago = "planDePago";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,11 +130,11 @@ public class ActividadFiltrar extends AppCompatActivity {
                 Intent intent = new Intent(instance, MainActivity.class);
                 double maxValueSlider = Double.parseDouble(valorSeekBar.getText().toString());
                 HashMap<String, Boolean> estado = new HashMap<>();
-                estado.put(stringPagada, checkBoxPagada.isChecked());
-                estado.put(stringAnulada, checkBoxAnulada.isChecked());
-                estado.put(stringPendienteDePago, checkBoxPendienteDePago.isChecked());
-                estado.put(stringCuotaFija, checkBoxCuotaFija.isChecked());
-                estado.put(stringPlanDePago, checkBoxPlanDePago.isChecked());
+                estado.put(Constantes.stringPagada, checkBoxPagada.isChecked());
+                estado.put(Constantes.stringAnulada, checkBoxAnulada.isChecked());
+                estado.put(Constantes.stringPendienteDePago, checkBoxPendienteDePago.isChecked());
+                estado.put(Constantes.stringCuotaFija, checkBoxCuotaFija.isChecked());
+                estado.put(Constantes.stringPlanDePago, checkBoxPlanDePago.isChecked());
                 String fechaMin = fechaInicio.getText().toString();
                 String fechaMax = fechaFin.getText().toString();
                 FiltroFacturas miFiltro = new FiltroFacturas(fechaMax, fechaMin, maxValueSlider, estado);

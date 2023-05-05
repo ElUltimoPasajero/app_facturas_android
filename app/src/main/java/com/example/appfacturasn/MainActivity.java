@@ -139,16 +139,16 @@ public class MainActivity extends AppCompatActivity implements Callback<Facturas
                 if (factura.getDescEstado().equals("Pagada") && pagada) {
                     listFiltro2.add(factura);
                 }
-                if (factura.getDescEstado().equals("Pendiente de pago") && pendienteDePago) {
+                else if (factura.getDescEstado().equals("Pendiente de pago") && pendienteDePago) {
                     listFiltro2.add(factura);
                 }
-                if (factura.getDescEstado().equals("Anulada") && anulada) {
+               else if (factura.getDescEstado().equals("Anulada") && anulada) {
                     listFiltro2.add(factura);
                 }
-                if (factura.getDescEstado().equals("Cuota fija") && cuotaFija) {
+               else if (factura.getDescEstado().equals("Cuota fija") && cuotaFija) {
                     listFiltro2.add(factura);
                 }
-                if (factura.getDescEstado().equals("Plan de pago") && planDePago) {
+               else if (factura.getDescEstado().equals("Plan de pago") && planDePago) {
                     listFiltro2.add(factura);
                 }
             }
@@ -209,9 +209,7 @@ public class MainActivity extends AppCompatActivity implements Callback<Facturas
         TextView textView = new TextView(MainActivity.this);
         textView.setText("Aqui no hay nada");
         textView.setTextSize(30);
-        textView.setVisibility(View.INVISIBLE);
 
-        textView.setVisibility(View.VISIBLE);
         RelativeLayout layout = new RelativeLayout(MainActivity.this);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
