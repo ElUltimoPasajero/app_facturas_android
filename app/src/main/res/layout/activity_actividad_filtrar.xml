@@ -218,7 +218,7 @@
             android:id="@+id/checkBoxPLanDePago"
             android:layout_width="169dp"
             android:layout_height="34dp"
-            android:text="@string/pendiente_de_pago"
+            android:text="@string/plan_de_pago"
             app:layout_constraintBottom_toTopOf="@+id/buttonAplicar"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/checkBoxPendienteDePago" />

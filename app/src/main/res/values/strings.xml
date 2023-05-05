@@ -8,7 +8,7 @@
     <string name="filtrar_facturas">Filtrar Facturas</string>
     <string name="anulada">Anulada</string>
     <string name="pendiente_de_pago">Pendiente de pago</string>
-    <string name="plan_de_pago">Fecha de emision</string>
+    <string name="plan_de_pago">Plan de pago</string>
     <string name="cuota_fija">Cuota fija</string>
     <string name="fecha_emision">Fecha de emision</string>
     <string name="boton_aplicar">Aplicar</string>
