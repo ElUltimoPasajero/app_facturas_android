@@ -7,20 +7,13 @@ import androidx.core.view.MenuProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -31,7 +24,6 @@ import com.google.gson.Gson;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
@@ -105,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements Callback<Facturas
             String datosRecibidos = getIntent().getStringExtra("filtro");
 
             if (datosRecibidos != null) {
-                Filtro filtro = new Gson().fromJson(datosRecibidos, Filtro.class);
+                FiltroFacturas filtro = new Gson().fromJson(datosRecibidos, FiltroFacturas.class);
 
                 List<FacturasVO.Factura> listFiltro = facturaList;
 

@@ -36,13 +36,15 @@ public class ActividadFiltrar extends AppCompatActivity {
     private int valorActualSeekbar = 0;
 
     MenuHost menu = this;
-    private Activity ActividadFiltrar = this;
+    private Activity ActividadFiltrarFacturas = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_filtrar);
 
+
+        // Creamos un proveedor de menús para el menú 'volver'.
         menu.addMenuProvider(new MenuProvider() {
             @Override
             public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
@@ -52,19 +54,24 @@ public class ActividadFiltrar extends AppCompatActivity {
 
             @Override
             public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.vuelta:
-                        Intent intent = new Intent(ActividadFiltrar, MainActivity.class);
-                        startActivity(intent);
-                        return true;
+                if(menuItem.getItemId() == R.id.vuelta) {
+                    Intent intent = new Intent(ActividadFiltrarFacturas, MainActivity.class);
+                    startActivity(intent);
+                    return true;
+                } else {
+                    return false;
                 }
-                return false;
             }
-        });
 
-         TextView valorSeekBar = (TextView) findViewById(R.id.cifraSlider);
+        });
+        // Obtenemos la referencia del TextView 'cifraSlider'.
+
+
+        TextView valorSeekBar = (TextView) findViewById(R.id.cifraSlider);
+        // Obtenemos el valor máximo del importe de facturas de la actividad MainActivity.
 
         int valorRealMax = MainActivity.maxImporte.intValue() + 1;
+        // Establecemos los valores del SeekBar de importe.
 
         importeSeekBar = findViewById(R.id.sliderImporte);
         importeSeekBar.setMax(valorRealMax);
@@ -73,12 +80,14 @@ public class ActividadFiltrar extends AppCompatActivity {
         valorSeekBar.setText(String.valueOf(valorRealMax));
         valorActualSeekbar = valorRealMax;
 
+        // Configuramos el Listener del SeekBar de importe.
 
         importeSeekBar.setMax((valorRealMax));
 
         importeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // Actualizamos el TextView 'cifraSlider' con el valor actual del SeekBar.
 
                 TextView importeTextview = findViewById(R.id.cifraSlider);
 
@@ -91,10 +100,14 @@ public class ActividadFiltrar extends AppCompatActivity {
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
 
+                //no-op
+
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+
+                //no-op
 
             }
         });
@@ -124,7 +137,7 @@ public class ActividadFiltrar extends AppCompatActivity {
                 estado.put("planDePago", checkBoxPlanDePago.isChecked());
                 String fechaMin = fechaInicio.getText().toString();
                 String fechaMax = fechaFin.getText().toString();
-                Filtro miFiltro = new Filtro(fechaMax, fechaMin, maxValueSlider, estado);
+                FiltroFacturas miFiltro = new FiltroFacturas(fechaMax, fechaMin, maxValueSlider, estado);
                 intent.putExtra("filtro", gson.toJson(miFiltro));
                 Log.d("myIntent", intent.toString());
                 startActivity(intent);
@@ -167,7 +180,7 @@ public class ActividadFiltrar extends AppCompatActivity {
             }
         });
     }
-
+//Este metodo resetea todos los filtros
     private void resetFiltros() {
         // Restablecer valores de fecha
 

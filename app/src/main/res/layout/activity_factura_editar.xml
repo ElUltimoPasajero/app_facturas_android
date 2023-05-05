@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="271dp"
         android:layout_height="104dp"
-        android:text="Esta funcionalidad no está disponible"
+        android:text="@string/funcionalidad_no_disponible"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/sizePeso"
         android:textStyle="bold"
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
-        android:text="Cerrar"
+        android:text="@string/boton_cerrar"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"

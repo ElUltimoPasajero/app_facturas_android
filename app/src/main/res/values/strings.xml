@@ -14,7 +14,13 @@
     <string name="boton_aplicar">Aplicar</string>
     <string name="slider_importe">0</string>
     <string name="reinicio_filtros">Eliminar</string>
-    <string name="por_estado">Por estado</string>
+    <string name="funcionalidad_no_disponible">Esta funcionalidad no está disponible</string>
+    <string name="boton_cerrar">Cerrar</string>
+    <string name="por_estado">Por Estado</string>
+    <string name="historial_facturas">Historial De Facturas</string>
+
+
+
 
 
 

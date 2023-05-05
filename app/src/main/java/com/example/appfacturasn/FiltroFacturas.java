@@ -2,14 +2,14 @@ package com.example.appfacturasn;
 
 import java.util.HashMap;
 
-public class Filtro {
+public class FiltroFacturas {
     private String fechaMax;
     private String fechaMin;
     private double maxValueSlider;
 
     private HashMap<String, Boolean> estado = new HashMap<>();
 
-    public Filtro(String fechaMax, String fechaMin, double maxValueSlider, HashMap<String, Boolean> estado) {
+    public FiltroFacturas(String fechaMax, String fechaMin, double maxValueSlider, HashMap<String, Boolean> estado) {
         this.fechaMax = fechaMax;
         this.fechaMin = fechaMin;
         this.maxValueSlider = maxValueSlider;
