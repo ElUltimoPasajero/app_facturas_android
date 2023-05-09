@@ -19,7 +19,13 @@ public class FacturaEditar extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_factura_editar);
+
+        // Obtiene la referencia del botón de volver
+
         volver =(Button)findViewById(R.id.button2);
+
+        // Establecer un listener para el botón de volver
+
         volver.setOnClickListener(this);
 
     }
@@ -27,7 +33,14 @@ public class FacturaEditar extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button2:
+
+                // Crear un intent para volver a la actividad principal (MainActivity)
+
+
                 Intent intent2 = new Intent(FacturaEditar.this, MainActivity.class);
+
+                // Iniciar la actividad MainActivity
+
                 startActivity(intent2);
                 break;
         }

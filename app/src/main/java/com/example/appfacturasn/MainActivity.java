@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements Callback<Facturas
 
         MenuHost menu = this;
 
+        //Agregamos un proveedor de menu al objeto menu
+
         menu.addMenuProvider(new MenuProvider() {
             @Override
             public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
@@ -57,15 +59,14 @@ public class MainActivity extends AppCompatActivity implements Callback<Facturas
             @Override
             public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
 
+                if (menuItem.getItemId() == R.id.menuFiltros) {
 
-                switch (menuItem.getItemId()) {
+                    // Abre la actividad ActividadFiltrar cuando se selecciona la opción de menú "menuFiltros"
 
-                    case R.id.menuFiltros:
-                        Intent intent = new Intent(MainActivity.this, ActividadFiltrar.class);
-                        startActivity(intent);
-                        return true;
+                    Intent intent = new Intent(MainActivity.this, ActividadFiltrar.class);
+                    startActivity(intent);
+                    return true;
                 }
-
                 return false;
             }
         });
@@ -77,6 +78,9 @@ public class MainActivity extends AppCompatActivity implements Callback<Facturas
         facturaList = new ArrayList<>();
         facturasAdaptador = new FacturasAdaptador(facturaList);
         rvList.setAdapter(facturasAdaptador);
+
+        // Realizar una solicitud HTTP a través de Retrofit para obtener un objeto FacturasVO
+
 
         Call<FacturasVO> call = ApiAdapter.getApiService().getObjetoFacturasVO();
         call.enqueue(this);
@@ -94,16 +98,28 @@ public class MainActivity extends AppCompatActivity implements Callback<Facturas
                 maxImporte = Double.valueOf(facturaList.stream().max(Comparator.comparing(FacturasVO.Factura::getImporteOrdenacion)).get().getImporteOrdenacion());
             }
 
+            // Obtener los datos del filtro recibidos a través de un intento
+
+
             String datosRecibidos = getIntent().getStringExtra("filtro");
 
             if (datosRecibidos != null) {
+
+                // Convertir los datos del filtro de formato JSON a un objeto FiltroFacturas
+
+
                 FiltroFacturas filtro = new Gson().fromJson(datosRecibidos, FiltroFacturas.class);
 
                 List<FacturasVO.Factura> listFiltro = facturaList;
 
+                //Se aplican los diferentes filtros a la lista de facturas
+
                 listFiltro = chequearFiltroEstados(filtro.getEstado(), listFiltro);
                 listFiltro = chequearFiltroFechas(filtro.getFechaMax(), filtro.getFechaMin(), listFiltro);
                 listFiltro = chekearBarraImporte(filtro.getMaxValueSlider(), listFiltro);
+
+                // Mostrar un mensaje si la lista filtrada está vacía
+
 
                 if (listFiltro.isEmpty()) {
 
@@ -124,7 +140,12 @@ public class MainActivity extends AppCompatActivity implements Callback<Facturas
     @Override
     public void onFailure(Call<FacturasVO> call, Throwable t) {
 
+        //Manejo del fallo en la llamada a la API
+
     }
+
+    // Método para filtrar las facturas según el estado seleccionado
+
 
     private List<FacturasVO.Factura> chequearFiltroEstados(HashMap<String, Boolean> estado, List<FacturasVO.Factura> listFiltro) {
         boolean pagada = estado.get("pagada");
@@ -156,6 +177,8 @@ public class MainActivity extends AppCompatActivity implements Callback<Facturas
         }
         return listFiltro;
     }
+
+    //Metodo para filtar las facturas por fecha
 
     private List<FacturasVO.Factura> chequearFiltroFechas(String fechaMax, String fechaMin, List<FacturasVO.Factura> listFiltro) {
 
@@ -189,6 +212,8 @@ public class MainActivity extends AppCompatActivity implements Callback<Facturas
         return listFiltro;
     }
 
+    //Metodo para filtar las facturas segun el importe del slidebar
+
     private List<FacturasVO.Factura> chekearBarraImporte(Double importeFiltro, List<FacturasVO.Factura> listFiltro) {
 
         List<FacturasVO.Factura> listFiltroSeekBar = new ArrayList<>();
@@ -204,11 +229,16 @@ public class MainActivity extends AppCompatActivity implements Callback<Facturas
         return listFiltro;
     }
 
+    //Metodo para mostra el mensaje de que el filtro no arroja resultado
+
     private void mostrarMensajeFiltroVacio() {
 
         TextView textView = new TextView(MainActivity.this);
         textView.setText("Aqui no hay nada");
         textView.setTextSize(30);
+
+        // Crear un RelativeLayout para contener el TextView
+
 
         RelativeLayout layout = new RelativeLayout(MainActivity.this);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(

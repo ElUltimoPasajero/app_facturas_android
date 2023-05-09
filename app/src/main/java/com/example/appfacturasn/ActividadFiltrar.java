@@ -118,7 +118,6 @@ public class ActividadFiltrar extends AppCompatActivity {
         CheckBox checkBoxCuotaFija = (CheckBox) findViewById(R.id.checkBoxCuotaFija);
         CheckBox checkBoxPendienteDePago = (CheckBox) findViewById(R.id.checkBoxPendienteDePago);
         CheckBox checkBoxPlanDePago = (CheckBox) findViewById(R.id.checkBoxPLanDePago);
-
         Button fechaInicio = (Button) findViewById(R.id.buttonDesde);
         Button fechaFin = (Button) findViewById(R.id.buttonHasta);
 
@@ -126,10 +125,19 @@ public class ActividadFiltrar extends AppCompatActivity {
         botonFiltrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // Crear una instancia de Gson para convertir objetos en formato JSON
+
                 Gson gson = new Gson();
                 Intent intent = new Intent(instance, MainActivity.class);
                 double maxValueSlider = Double.parseDouble(valorSeekBar.getText().toString());
+
+                // Crear un HashMap para almacenar el estado de varias casillas de verificación
+
                 HashMap<String, Boolean> estado = new HashMap<>();
+
+                //Aqui agregamos el estado de las casillas
+
                 estado.put(Constantes.stringPagada, checkBoxPagada.isChecked());
                 estado.put(Constantes.stringAnulada, checkBoxAnulada.isChecked());
                 estado.put(Constantes.stringPendienteDePago, checkBoxPendienteDePago.isChecked());
@@ -145,6 +153,7 @@ public class ActividadFiltrar extends AppCompatActivity {
 
         });
 
+         // Configurar un OnClickListener para el componente fechaInicio
         fechaInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,6 +166,9 @@ public class ActividadFiltrar extends AppCompatActivity {
                 dpd.show();
             }
         });
+
+        // Configurar un OnClickListener para el componente fechaFin
+
         fechaFin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
